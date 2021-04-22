@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Choose-Movie</title>
+<style>
+    .division{
+        background-color:#8b0000;
+        height: 25px;
+        position: fixed;
+        width: 100%;
+        padding: 20px 7px;
+        text-align: center;
+        top: 0%;
+        word-spacing: 50px; 
+    }
+    .division a{
+        float: center;
+        color: antiquewhite;
+        font-size: 17px;
+        text-align: center;
+        padding: 20px 7px;
+        text-decoration: none;
+    }
+
+    h1{
+        color: blue;
+        text-align: center;
+        text-shadow: 2px 2px #ff0000;
+    }
+    body{
+        background: linear-gradient(to right, #ffebcd,#faebd7);
+    }
+    table{
+        font-size: 20px;
+        padding: 20px 7px;
+    }
+    button{
+        padding: 10px 10px;
+        font-size: 13px;
+        background-color: #8b0000;
+        color: white;
+    }
+    P{
+        font-size: 21px;
+    }
+    </style>
+</head>
+<body>
+<div class="division"></div><br><br><br><br><br>
+<Center><h1>PAYMENT DETAILS</h1></Center>
+<center><table><tr><td>Card Number</td>
+<td><input  onchange="check_cardno()" type='number' name='cardno' id='cardno' placeholder='Enter card Number' required></td></tr>
+<tr><td>Expire Date</td>
+    <td><input  onchange="check_date()" type='month' name='date' id='date' placeholder='MM/YYYY' min='2021-04' required></td></tr>
+<tr><td>Enter the CVV number</td>
+<td><input type='password' name='cvv' id='cvv' placeholder='cvv' required></td></tr></table>
+<br>
+<button type="submit" onclick="thankyou()">SUBMIT</button>
+</form>
+<script>
+function check_cardno(){
+        let cardNumber=document.querySelector("#cardno").value;
+        if(cardNumber.length==12){
+
+        }
+        else{
+            alert("Incorrect Card Number");
+            event.preventDefault();
+        }
+}
+function thankyou(){
+        let cvvNumber=document.querySelector("#cvv").value;
+        if(cvvNumber.length==3){
+            alert("Paymen Sucessfull, THANK YOU :)");
+        }
+        else{
+            alert("Incorrect CVV Number");
+            event.preventDefault();
+        }
+}
+</script>
+</body>

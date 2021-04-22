@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Choose-Movie</title>
+<style>
+    .division{
+        background-color:#8b0000;
+        height: 25px;
+        position: fixed;
+        width: 100%;
+        padding: 20px 7px;
+        text-align: center;
+        top: 0%;
+        word-spacing: 50px; 
+    }
+    .division a{
+        float: center;
+        color: antiquewhite;
+        font-size: 17px;
+        text-align: center;
+        padding: 20px 7px;
+        text-decoration: none;
+    }
+
+    h1{
+        color: blue;
+        text-align: center;
+        text-shadow: 2px 2px #ff0000;
+    }
+    body{
+        background: linear-gradient(to right, #ffebcd,#faebd7);
+    }
+    table{
+        font-size: 20px;
+        padding: 20px 7px;
+    }
+    button{
+        padding: 10px 10px;
+        font-size: 13px;
+        background-color: #8b0000;
+        color: white;
+    }
+    P{
+        font-size: 21px;
+    }
+    </style>
+</head>
+<body>
+        <div class="division">     </div><br><br><br>
+        <h1>BOOKING</h1>
+<center><form action="bill.html"><table><tr><td>
+Choose Your Favourite Movie</td>
+<td><select name="movies" id="movies" onchange="movie()" >
+  <option value="Choose">CHOOSE</option>
+  <option value="A">A</option>
+  <option value="B">B</option>
+  <option value="C">C</option>
+  <option value="D">D</option>
+  <option value="E">E</option>
+  <option value="F">F</option>
+  <option value="G">G</option>
+</select></td></tr>
+<tr><td>Enter the number Adults</td><td><input type="number" name="adults" id="adults" onchange="adult()" required></td></tr>
+<tr><td>Enter the number of Children</td><td><input type="number" name="children" id="children" onchange="child()" required></td></tr>
+<tr><td>Movie Date</td>
+    <td><input  type='date' name='mvdate' id='mvdate' onchange="movie_date()" required></td></tr>
+    <tr><td>Movie Time</td>
+        <td><select name="time" id="time" onchange="movie_time()">
+                <option value="Choose">CHOOSE</option>
+                <option value="07:00 AM to 10:00 AM">07:00 AM to 10:00 AM</option>
+                <option value="11:00 AM to 02:00 PM">11:00 AM to 02:00 PM</option>
+                <option value="03:00 PM to 06:00 PM">03:00 PM to 06:00 PM</option>
+                <option value="07:00 PM to 10:00 PM">07:00 PM to 10:00 PM</option>
+              </select></td></tr>
+</table><p id="mv"></p>
+<p id="dis"></p>
+<p id="ad"></p>
+<p id="ch"></p>
+<p id="total"></p>
+<button  >CONFIRM</button></form>
+</center>
+<script>
+    function movie(){
+        var cinema=document.getElementById("movies").value;
+        document.getElementById("mv").innerHTML="You selected: "+cinema;
+        if(cinema=="c"){
+            document.getElementById("dis").innerHTML="You will have 50% percent discount on your total bill";
+        }
+        
+    localStorage.setItem("movie", cinema);
+    }
+    function adult(){
+        var adu=document.getElementById("adults").value;
+        document.getElementById("ad").innerHTML="Number of adults: "+adu;
+        localStorage.setItem("adult", adu);
+    }
+    function child(){
+        var chi=document.getElementById("children").value;
+        document.getElementById("ch").innerHTML="Number of Children: "+chi;
+        localStorage.setItem("child", chi);
+        var adul=document.getElementById("adults").value;
+        var child_count=parseInt(chi);
+        var adult_count=parseInt(adul);
+        var total_count=child_count+adult_count;
+        document.getElementById("total").innerHTML="Total Tickets: "+total_count;
+    }
+    function movie_date(){
+        let mdate=document.querySelector("#mvdate").value;
+        let movie_date=new Date(mdate);
+        let today = new Date();
+        localStorage.setItem("date",mdate);
+		if(movie_date>today) {
+			
+		}
+		else {
+			alert("You can't book tickets for past days");
+            event.preventDefault();
+		}
+    }
+    function movie_time(){
+        let mtime=document.querySelector("#time").value;
+        localStorage.setItem("time",mtime);
+    }
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<style>
+        .division{
+            background-color:#8b0000;
+            height: 25px;
+            position: fixed;
+            width: 100%;
+            padding: 20px 7px;
+            text-align: center;
+            top: 0%;
+            word-spacing: 50px; 
+        }
+        .division a{
+            float: center;
+            color: antiquewhite;
+            font-size: 17px;
+            text-align: center;
+            padding: 20px 7px;
+            text-decoration: none;
+        }
+    
+        h1{
+            color: blue;
+            text-align: center;
+            text-shadow: 2px 2px #ff0000;
+        }
+        body{
+            background: linear-gradient(to right, #ffebcd,#faebd7);
+        }
+        table{
+            font-size: 20px;
+            padding: 20px 7px;
+        }
+        button{
+            padding: 10px 10px;
+            font-size: 13px;
+            background-color: #8b0000;
+            color: white;
+        }
+        </style>
+</head>
+<div class="division"></div><br><br><br><br><br>
+<body><Center><h1>LOGIN</h1></Center>
+<center><form action="movielist.html"><table><tr><td>Phone Number</td>
+<td><input  onchange="login()" type='number' name='phnno' id='phnno' placeholder='Enter Phone Number' required></td></tr>
+<tr><td>Enter the password</td>
+<td><input type='password' name='pass' id='pass' placeholder='Enter password' required></td></tr></table>
+<br>
+<button type="submit" onclick="passcheck()">SUBMIT</button>
+</form>
+<script>
+function login(){
+        //alert("WELCOME");
+        let mobileNumber=document.querySelector("#phnno").value;
+        if(mobileNumber.length==10){
+        //    alert("Valid Mobile Number");
+        }
+        else{
+            alert("Incorrect Mobile Number");
+            event.preventDefault();
+        }
+}
+function passcheck(){
+        let password=document.querySelector("#pass").value;
+        if(password.length>6){
+            
+        }
+        else{
+            alert("Password should have maximum 8 characters");
+            event.preventDefault();
+        }
+    }
+</script>
+</center>
+</body>
+</html>

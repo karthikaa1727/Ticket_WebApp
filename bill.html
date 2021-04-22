@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Choose-Movie</title>
+<style>
+    .division{
+        background-color:#8b0000;
+        height: 25px;
+        position: fixed;
+        width: 100%;
+        padding: 20px 7px;
+        text-align: center;
+        top: 0%;
+        word-spacing: 50px; 
+    }
+    .division a{
+        float: center;
+        color: antiquewhite;
+        font-size: 17px;
+        text-align: center;
+        padding: 20px 7px;
+        text-decoration: none;
+    }
+
+    h1{
+        color: blue;
+        text-align: center;
+        text-shadow: 2px 2px #ff0000;
+    }
+    body{
+        background: linear-gradient(to right, #ffebcd,#faebd7);
+    }
+    table{
+        font-size: 20px;
+        padding: 20px 7px;
+    }
+    button{
+        padding: 10px 10px;
+        font-size: 13px;
+        background-color: #8b0000;
+        color: white;
+    }
+    </style>
+</head>
+<body><form action="card.html">
+    <div class="division"> </div><br><br><br><h1>TOTAL BILL</h1>
+    
+    <center>
+            <div id="summary"></div>
+    </center>
+    <script>
+
+        function displayBill(){
+
+           //localStorage.setItem("name", "Sachin");
+           let movie_name = localStorage.getItem("movie");            //to get the movie name 
+           let no_of_adult = localStorage.getItem("adult");           //to get the number of adults
+           let no_of_child = localStorage.getItem("child");           //to get the number of child
+           let movie_date = localStorage.getItem("date");             //to get the movie date
+           let movie_time = localStorage.getItem("time");             //to get the movie time
+           let adult=parseInt(no_of_adult);
+           let Amount_adult=adult*200;
+           let child=parseInt(no_of_child);
+           let Amount_child=child*170;
+           let total_member=adult+child;
+           let total_amount=Amount_child+Amount_adult;
+           let gst=total_amount*0.15;
+           let gst_amount=gst+total_amount;
+           let discount_movie="C";
+           console.log(discount_movie);
+           console.log(movie_name);
+           let final_amount=0;
+           if(movie_name===discount_movie){
+                final_amount=gst_amount*0.50;
+           }
+           else{
+                final_amount=gst_amount;
+           }
+           let table = `<table><tr><td>Movie</td><td>${movie_name}</td></tr> 
+                <tr><td>Your Booking Date </td><td>${movie_date}</td></tr>
+                <tr><td>Your Booking Time </td><td>${movie_time}</td></tr>
+                <tr><td>Number of Children</td><td>${no_of_child}</td></tr>
+                <tr><td>Amount for Children </td><td>${Amount_child}</td></tr>
+                <tr><td>Number of Adults </td><td>${no_of_adult}</td></tr>
+                <tr><td>Amount for Adults</td><td>${Amount_adult}</td></tr>
+                <tr><td>Total Members </td><td>${total_member}</td></tr>
+                <tr><td>Total Bill</td><td>${total_amount}</td></tr>
+                <tr><td>GST </td><td>15%</td></tr>
+                <tr><td>GST Amount </td><td>${gst}</td></tr>
+                <tr><td>Bill with GST </td><td>${gst_amount}</td></tr>
+                <tr><td>Total Bill Amount </td><td>${final_amount}</td></tr>
+                </table>`;
+                document.querySelector("#summary").innerHTML = table;
+        
+        }
+
+        displayBill();
+    </script>
+   <center> <button type="submit">PAY</button></center></form>
+  <center> <footer><li>15% discount for Children !</li>
+    <li>Get 50% discount for movie C ! </li>
+</center></footer>
+</body>

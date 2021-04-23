@@ -90,20 +90,30 @@ Choose Your Favourite Movie</td>
         
     localStorage.setItem("movie", cinema);
     }
-    function adult(){
+       function adult(){
         var adu=document.getElementById("adults").value;
-        document.getElementById("ad").innerHTML="Number of adults: "+adu;
-        localStorage.setItem("adult", adu);
+        if(adu<=0){
+            alert("Invalid data");
+        }
+        else{
+            document.getElementById("ad").innerHTML="Number of adults: "+adu;
+            localStorage.setItem("adult", adu);
+        }
     }
     function child(){
         var chi=document.getElementById("children").value;
-        document.getElementById("ch").innerHTML="Number of Children: "+chi;
         localStorage.setItem("child", chi);
         var adul=document.getElementById("adults").value;
-        var child_count=parseInt(chi);
-        var adult_count=parseInt(adul);
-        var total_count=child_count+adult_count;
-        document.getElementById("total").innerHTML="Total Tickets: "+total_count;
+        if(chi<=0){
+            alert("Invalid data");
+        }
+        else{
+            document.getElementById("ch").innerHTML="Number of Children: "+chi;
+            var child_count=parseInt(chi);
+            var adult_count=parseInt(adul);
+            var total_count=child_count+adult_count;
+            document.getElementById("total").innerHTML="Total Tickets: "+total_count;   
+        }      
     }
     function movie_date(){
         let mdate=document.querySelector("#mvdate").value;
